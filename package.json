@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "reset": "supabase stop; docker volume rm $(docker volume ls --format '{{.Name}}' --filter label=com.supabase.cli.project=supabase_task_system); supabase start",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -22,5 +23,8 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.6",
     "postcss": "^8"
+  },
+  "//": {
+    "reset": "reset the supabase services"
   }
 }
