@@ -1,7 +1,24 @@
-export default function NewTaskPage() {
+"use client";
+import { useRef } from "react";
+
+export default function CreateTask() {
+  const taskTitleRef = useRef(null);
+  const taskDescriptionRef = useRef(null);
+
   return (
-    <>
-      <h1>New Task</h1>
-    </>
+    <article>
+      <h3>Create a new task</h3>
+
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          alert("TODO: Add a new task");
+        }}
+      >
+        <input ref={taskTitleRef} placeholder="Add a title" />
+        <textarea ref={taskDescriptionRef} placeholder="Add a comment" />
+        <button type="submit">Create task now</button>
+      </form>
+    </article>
   );
 }
