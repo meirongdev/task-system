@@ -26,7 +26,6 @@ export const Login = ({ isPasswordLogin }) => {
               alert("User login failed");
             }
           });
-          alert("User wants to login with password " + passwordInputRef.current.value);
         } else {
           alert("User wants to login with magic link " + emailInputRef.current.value);
         }
