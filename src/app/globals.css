@@ -1,5 +1,7 @@
-@tailwind base;
-@tailwind components;
+@import "@picocss/pico/css/pico.min.css";
+
+/* @tailwind base;
+@tailwind components; */
 @tailwind utilities;
 
 :root {
