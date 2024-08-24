@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { getSupabaseBrowserClient } from "@/supabase-utils/browserClient";
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Nav() {
   const pathname = usePathname();
@@ -10,6 +11,20 @@ export default function Nav() {
   const router = useRouter();
 
   const supabase = getSupabaseBrowserClient();
+
+  useEffect(() => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log("onAuthStateChange", event);
+      // 通过监控登录状态，实现用户登录后跳转到/页面
+      if (event === "SIGNED_OUT") {
+        router.push("/");
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   return (
     <nav>
@@ -51,10 +66,9 @@ export default function Nav() {
             prefetch={false}
             className="secondary"
             onClick={(event) => {
+              // 不进行href跳转,通过
               event.preventDefault();
-              supabase.auth.signOut().then(() => {
-                router.push("/");
-              });
+              supabase.auth.signOut();
             }}
           >
             Log out
