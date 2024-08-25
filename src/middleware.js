@@ -1,6 +1,6 @@
 import { getSupabaseReqResClient } from "@/supabase-utils/reqResClient";
+import { getSupabaseAdminClient } from "@/supabase-utils/adminClient";
 import { NextResponse } from "next/server";
-import { TENANT_MAP } from "./tenant-map";
 import { buildUrl, getHostnameAndPort } from "./utils/url-helpers";
 
 export async function middleware(request) {
@@ -12,14 +12,22 @@ export async function middleware(request) {
   const session = await supabase.auth.getSession();
 
   const [hostname] = getHostnameAndPort(request);
-  if (hostname in TENANT_MAP === false) {
-    return NextResponse.rewrite(new URL("/not-found", request.url));
+
+  const supabaseAdmin = getSupabaseAdminClient();
+  const { data: tenantData, error: tenantError } = await supabaseAdmin
+    .from("tenants")
+    .select("*")
+    .eq("domain", hostname)
+    .single();
+  if (tenantError) {
+    return NextResponse.rewrite(new URL("/not-found", req.url));
   }
+
+  const tenant = tenantData.id;
 
   const requestedPath = request.nextUrl.pathname;
   // const [tenant, ...restOfPath] = requestedPath.substr(1).split("/");
   // const applicationPath = "/" + restOfPath.join("/");
-  const tenant = TENANT_MAP[hostname];
   const applicationPath = requestedPath;
   if (!/[a-z0-9-_]+/.test(tenant)) {
     return NextResponse.rewrite(new URL("/not-found", request.url));
@@ -46,6 +54,7 @@ export async function middleware(request) {
   );
 }
 
+// TODO rewrite favicon.ico
 export const config = {
   matcher: ["/((?!.*\\.).*)"],
 };
