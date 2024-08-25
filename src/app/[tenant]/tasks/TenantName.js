@@ -1,10 +1,9 @@
-import { getSupabaseCookiesUtilClient } from "@/supabase-utils/cookieUtilClient";
+import { getSupabaseCookiesUtilClient } from "@/supabase-utils/cookiesUtilClient";
 
 export default async function TenantName({tenant}) {
   let tenantName = "Unknown";
   const supabase = getSupabaseCookiesUtilClient();
 
-  // TODO 查询不到数据
   const selection = await supabase
     .from("tenants")
     .select("name")
@@ -20,6 +19,7 @@ export default async function TenantName({tenant}) {
     //     message: 'JSON object requested, multiple (or no) rows returned'
     //   }
     // }
+    // need to config RLS to allow the tenant to see the tenant
 
   const { data, error } = selection;
   console.log({ tenant, data, error})

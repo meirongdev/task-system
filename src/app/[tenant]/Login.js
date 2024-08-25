@@ -18,9 +18,8 @@ export const Login = ({ formType = FORM_TYPES.PASSWORD_LOGIN, tenant }) => {
 
   const getPath = (subPath) => urlPath(subPath ?? "", tenant);
 
-
   const formAction = getPath(
-    isPasswordLogin ? `/auth/pw-login` : `/auth/magic-link`,
+    isPasswordLogin ? `/auth/pw-login` : `/auth/magic-link`
   );
 
   const loginBasePath = getPath("/");
@@ -158,6 +157,17 @@ export const Login = ({ formType = FORM_TYPES.PASSWORD_LOGIN, tenant }) => {
               Go to Password Recovery
             </Link>
           )}
+
+          <Link
+            href={urlPath("/register", tenant)}
+            style={{
+              textAlign: "center",
+              display: "block",
+              marginTop: "1em",
+            }}
+          >
+            Create account
+          </Link>
         </div>
       </article>
     </form>
