@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { FORM_TYPES } from "./formTypes";
+import { urlPath } from "@/utils/url-helpers";
 
-export const Login = ({ formType = FORM_TYPES.PASSWORD_LOGIN }) => {
+export const Login = ({ formType = FORM_TYPES.PASSWORD_LOGIN, tenant }) => {
   const emailInputRef = useRef(null);
   const passwordInputRef = useRef(null);
   const supabase = getSupabaseBrowserClient();
@@ -15,14 +16,14 @@ export const Login = ({ formType = FORM_TYPES.PASSWORD_LOGIN }) => {
   const isPasswordLogin = formType === FORM_TYPES.PASSWORD_LOGIN;
   const isMagicLinkLogin = formType === FORM_TYPES.MAGIC_LINK;
 
-  const formAction = isPasswordLogin ? `/auth/pw-login` : `/auth/magic-link`;
+  const formAction =urlPath( isPasswordLogin ? `/auth/pw-login` : `/auth/magic-link`, tenant);
 
   useEffect(() => {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === "SIGNED_IN") {
-        router.push("/tasks");
+        router.push(urlPath("/tasks", tenant));
       }
     });
 
@@ -111,7 +112,7 @@ export const Login = ({ formType = FORM_TYPES.PASSWORD_LOGIN }) => {
               role="button"
               className="contrast"
               href={{
-                pathname: "/",
+                pathname: urlPath("/", tenant),
                 query: { magicLink: "no" },
               }}
             >
@@ -123,7 +124,7 @@ export const Login = ({ formType = FORM_TYPES.PASSWORD_LOGIN }) => {
               role="button"
               className="contrast"
               href={{
-                pathname: "/",
+                pathname: urlPath("/", tenant),
                 query: { magicLink: "yes" },
               }}
             >
@@ -134,7 +135,7 @@ export const Login = ({ formType = FORM_TYPES.PASSWORD_LOGIN }) => {
           {!isPasswordRecovery && (
             <Link
               href={{
-                pathname: "/",
+                pathname: urlPath("/", tenant),
                 query: { passwordRecovery: "yes" },
               }}
               style={{

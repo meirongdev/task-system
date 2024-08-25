@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { urlPath} from "@/utils/url-helpers";
 
-export default function MagicLinkSuccessPage({ searchParams }) {
+export default function MagicLinkSuccessPage({ searchParams, params }) {
   const { type } = searchParams;
   const isRecovery = type === "recovery";
 
@@ -19,7 +20,7 @@ export default function MagicLinkSuccessPage({ searchParams }) {
 
       <br />
       <br />
-      <Link role="button" href="/">
+      <Link role="button" href={urlPath("/", params.tenant)}>
         Go back.
       </Link>
     </div>

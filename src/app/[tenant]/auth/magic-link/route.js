@@ -1,34 +1,33 @@
 import { getSupabaseAdminClient } from "@/supabase-utils/adminClient";
 import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
+import { buildUrl } from "@/utils/url-helpers";
 
-export async function POST(request) {
+export async function POST(request, { params }) {
   const formData = await request.formData();
   const email = formData.get("email");
   const supabaseAdmin = getSupabaseAdminClient();
   const type = formData.get("type") === "recovery" ? "recovery" : "magiclink";
+
+  const tenantUrl = (path) => buildUrl(path, params.tenant, request);
 
   // 从AUTH Service获取一个OTP
   const { data: linkData, error } = await supabaseAdmin.auth.admin.generateLink(
     {
       email,
       type,
-    },
+    }
   );
 
   if (error) {
-    return NextResponse.redirect(
-      new URL(`/error?type=${type}`, request.url),
-      302,
-    );
+    return NextResponse.redirect(tenantUrl(`/error?type=${type}`), 302);
   }
 
   const { hashed_token } = linkData.properties;
 
   // 构造包含OTP的链接
-  const constructedLink = new URL(
-    `/auth/verify?hashed_token=${hashed_token}&type=${type}`,
-    request.url,
+  const constructedLink = tenantUrl(
+    `/auth/verify?hashed_token=${hashed_token}&type=${type}`
   );
 
   // in local development, send to supabase_inbucket_task-system
@@ -54,6 +53,6 @@ export async function POST(request) {
     `,
   });
 
-  const thanksUrl = new URL(`/magic-thanks?type=${type}`, request.url);
+  const thanksUrl = tenantUrl(`/magic-thanks?type=${type}`);
   return NextResponse.redirect(thanksUrl, 302);
 }

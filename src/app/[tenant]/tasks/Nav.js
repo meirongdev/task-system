@@ -3,14 +3,17 @@ import Link from "next/link";
 import { getSupabaseBrowserClient } from "@/supabase-utils/browserClient";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { urlPath } from "@/utils/url-helpers";
 
-export default function Nav() {
+export default function Nav({tenant}) {
   const pathname = usePathname();
   const activeProps = { className: "contrast" };
   const inactiveProps = { className: "secondary outline" };
   const router = useRouter();
 
   const supabase = getSupabaseBrowserClient();
+
+  const getPath = (subPath) => urlPath(subPath ?? "/", tenant);
 
   useEffect(() => {
     const {
@@ -19,30 +22,31 @@ export default function Nav() {
       console.log("onAuthStateChange", event);
       // 通过监控登录状态，实现用户登录后跳转到/页面
       if (event === "SIGNED_OUT") {
-        router.push("/");
+        router.push(getPath());
       }
     });
 
     return () => subscription.unsubscribe();
   }, []);
 
+  
   return (
     <nav>
       <ul>
         <li>
           <Link
             role="button"
-            href="/tasks"
-            {...(pathname === "/tasks" ? activeProps : inactiveProps)}
+            href={getPath("/tasks")}
+            {...(pathname === getPath("/tasks") ? activeProps : inactiveProps)}
           >
-            Ticket List
+            Task List
           </Link>
         </li>
         <li>
           <Link
             role="button"
-            href="/tasks/new"
-            {...(pathname === "/tasks/new" ? activeProps : inactiveProps)}
+            href={getPath("/tasks/new")}
+            {...(pathname === getPath("/tasks/new") ? activeProps : inactiveProps)}
           >
             Create New Task
           </Link>
@@ -50,8 +54,8 @@ export default function Nav() {
         <li>
           <Link
             role="button"
-            href="/tasks/users"
-            {...(pathname === "/tasks/users" ? activeProps : inactiveProps)}
+            href={getPath("/tasks/users")}
+            {...(pathname === getPath("/tasks/users") ? activeProps : inactiveProps)}
           >
             User List
           </Link>
@@ -62,7 +66,7 @@ export default function Nav() {
         <li>
           <Link
             role="button"
-            href="/logout"
+            href={getPath("/auth/logout")}
             prefetch={false}
             className="secondary"
             onClick={(event) => {

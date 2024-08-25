@@ -7,11 +7,11 @@ const dummyTasks = [
   { id: 4, title: "Task 4", status: "DONE" , author: "Alice" },
 ];
 
-export default function TaskListPage() {
+export default function TaskListPage({params}) {
   return (
     <>
       <h1>Tasks List</h1>
-      <TaskList tasks={dummyTasks} />
+      <TaskList tasks={dummyTasks} tenant={params.tenant} />
     </>
   );
 }
