@@ -16,15 +16,23 @@ export async function middleware(request) {
   const applicationPath = "/" + restOfPath.join("/");
 
   const sessionUser = session.data?.session?.user;
-  if (applicationPath.startsWith("/tasks") && !sessionUser) {
-    // https://nextjs.org/docs/messages/middleware-relative-urls
-    response.value = NextResponse.redirect(new URL("/${tenant}/", request.url));
+  if (applicationPath.startsWith("/tasks")) {
+    if (!sessionUser) {
+      // https://nextjs.org/docs/messages/middleware-relative-urls
+      return NextResponse.redirect(
+        new URL(`/${tenant}/`, request.url)
+      );
+    } else if (!sessionUser.app_metadata?.tenants.includes(tenant)) {
+      return NextResponse.rewrite(new URL("/not-found", request.url));
+    }
   } else if (applicationPath === "/") {
     if (sessionUser) {
-      response.value = NextResponse.redirect(new URL("/${tenant}/tasks", request.url));
+      return NextResponse.redirect(new URL(`/${tenant}/tasks`, request.url));
     }
   }
-  return response.value;
+  return NextResponse.rewrite(
+    new URL(`/${tenant}${applicationPath}${request.nextUrl.search}`, request.url)
+  );
 }
 
 export const config = {

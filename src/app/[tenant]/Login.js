@@ -16,14 +16,22 @@ export const Login = ({ formType = FORM_TYPES.PASSWORD_LOGIN, tenant }) => {
   const isPasswordLogin = formType === FORM_TYPES.PASSWORD_LOGIN;
   const isMagicLinkLogin = formType === FORM_TYPES.MAGIC_LINK;
 
-  const formAction =urlPath( isPasswordLogin ? `/auth/pw-login` : `/auth/magic-link`, tenant);
+  const formAction = urlPath(
+    isPasswordLogin ? `/auth/pw-login` : `/auth/magic-link`,
+    tenant
+  );
 
   useEffect(() => {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === "SIGNED_IN") {
-        router.push(urlPath("/tasks", tenant));
+        if (session.user.app_metadata?.tenants.includes(tenant)) {
+          router.push(urlPath("/tasks", tenant));
+        } else {
+          supabase.auth.signOut();
+          alert("Could not sign in, tenant does not match.");
+        }
       }
     });
 
