@@ -1,5 +1,3 @@
-//
-
 import { getSupabaseCookiesUtilClient } from "@/supabase-utils/cookiesUtilClient";
 import { urlPath } from "@/utils/url-helpers";
 import { TASK_STATUS } from "@/utils/constants";
@@ -8,7 +6,10 @@ import Link from "next/link";
 
 export async function TaskList({ tenant, searchParams }) {
   let page = 1;
-  const pageSize = 1;
+  let pageSize = 10;
+  if (process.env.OVERRIDE_PAGESIZE) {
+    pageSize = Number(process.env.OVERRIDE_PAGESIZE);
+  }
   if (
     Number.isInteger(Number(searchParams.page)) &&
     Number(searchParams.page) > 0
@@ -18,20 +19,39 @@ export async function TaskList({ tenant, searchParams }) {
 
   const startingPoint = (page - 1) * pageSize;
   const supabase = getSupabaseCookiesUtilClient();
-  const { data: tasks, error } = await supabase
-    .from("tasks")
-    .select()
-    .eq("tenant", tenant)
-    .order("status", {ascending: true})
-    .order("created_at", {ascending: false})
-    .range(startingPoint, startingPoint + pageSize - 1);
-
-  const { count, countError } = await supabase
+  let tasksStatement = supabase.from("tasks").select().eq("tenant", tenant);
+  let countStatement = supabase
     .from("tasks")
     .select("*", { count: "exact", head: true })
     .eq("tenant", tenant);
+
+  const searchValue = searchParams.search?.trim();
+  if (searchValue) {
+    const cleanSearchString = searchValue
+      .replaceAll('"', "")
+      .replaceAll("\\", "")
+      .replaceAll("%", "");
+    const postgrestSearchValue = '"%' + cleanSearchString + '%"';
+    const postgrestFilterString =
+      `title.ilike.${postgrestSearchValue}` +
+      `, description.ilike.${postgrestSearchValue}`;
+
+    countStatement = countStatement.or(postgrestFilterString);
+    tasksStatement = tasksStatement.or(postgrestFilterString);
+  }
+
+  tasksStatement = tasksStatement
+    .order("status", { ascending: true })
+    .order("created_at", { ascending: false })
+    .range(startingPoint, startingPoint + pageSize - 1);
+
+  const { count } = await countStatement;
+  const { data: tasks, error } = await tasksStatement;
+  if (error) {
+    // TODO handle error
+    console.error(error);
+  }
   const more = count - page * pageSize > 0;
-  console.log(count, countError, more, tasks, )
   return (
     <>
       <table>
