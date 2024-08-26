@@ -25,9 +25,9 @@ export async function GET(request, { params }) {
     return getRedirect("/error?type=invalid_magiclink");
   } else {
     if (isRecovery) {
-      return getRedirect("/tickets/change-password");
+      return getRedirect("/tasks/change-password");
     } else {
-      return getRedirect("/tickets");
+      return getRedirect("/tasks");
     }
   }
 }
