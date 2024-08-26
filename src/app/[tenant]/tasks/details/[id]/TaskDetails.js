@@ -43,7 +43,7 @@ export function TaskDetails({
                   .eq("id", id)
                   .then((res) => {
                     console.log(res);
-                    router.push(urlPath("/tasks", tenant)+"?r="+Math.random());
+                    router.push(urlPath("/tasks", tenant));
                   }).catch((err) => {
                     console.error(err);
                   });

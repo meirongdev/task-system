@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import { TaskList } from "./TaskList";
 import { TaskFilters } from "./TaskFilters";
 
+export const dynamic = "force-dynamic";
+
 export default function TaskListPage({ params, searchParams }) {
   return (
     <>
