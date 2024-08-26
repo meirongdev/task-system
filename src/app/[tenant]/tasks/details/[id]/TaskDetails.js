@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { TaskComments } from "./TaskComments";
 import { TASK_STATUS } from "@/utils/constants";
 import { urlPath } from "@/utils/url-helpers";
+import { AssigneeSelect } from "@/components/AssigneeSelect";
 
 export function TaskDetails({
   tenant,
@@ -15,12 +16,12 @@ export function TaskDetails({
   created_at,
   description,
   author_name,
+  assignee,
   isAuthor,
 }) {
   const supabase = getSupabaseBrowserClient();
   const router = useRouter();
   const dateString = new Date(created_at).toLocaleString("en-US");
-
   return (
     <article className={classes.taskDetails}>
       <header>
@@ -31,27 +32,52 @@ export function TaskDetails({
               {TASK_STATUS[status]}
             </strong>
           </div>
-
-          {isAuthor && (
-            <button
-              role="button"
-              className="little-danger"
-              onClick={() => {
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignitems: "end",
+            }}
+          >
+            <AssigneeSelect
+              tenant={tenant}
+              onValueChanged={(value) => {
                 supabase
                   .from("tasks")
-                  .delete()
+                  .update({ assignee: value })
                   .eq("id", id)
                   .then((res) => {
                     console.log(res);
-                    router.push(urlPath("/tasks", tenant));
-                  }).catch((err) => {
+                    router.refresh();
+                  })
+                  .catch((err) => {
                     console.error(err);
                   });
               }}
-            >
-              Delete task
-            </button>
-          )}
+              initialValue={assignee}
+            />
+            {isAuthor && (
+              <button
+                role="button"
+                className="little-danger"
+                onClick={() => {
+                  supabase
+                    .from("tasks")
+                    .delete()
+                    .eq("id", id)
+                    .then((res) => {
+                      console.log(res);
+                      router.push(urlPath("/tasks", tenant));
+                    })
+                    .catch((err) => {
+                      console.error(err);
+                    });
+                }}
+              >
+                Delete task
+              </button>
+            )}
+          </div>
         </div>
 
         <br />

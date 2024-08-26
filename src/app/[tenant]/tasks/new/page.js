@@ -3,6 +3,7 @@ import { urlPath } from "@/utils/url-helpers";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+import { AssigneeSelect } from "@/components/AssigneeSelect";
 import { getSupabaseBrowserClient } from "@/supabase-utils/browserClient";
 
 export default function CreateTask({ params }) {
@@ -12,6 +13,7 @@ export default function CreateTask({ params }) {
 
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const [assignee, setAssignee] = useState(null);
 
   const supabase = getSupabaseBrowserClient();
 
@@ -31,12 +33,14 @@ export default function CreateTask({ params }) {
           const description = taskDescriptionRef.current.value.trim();
           if (title.length >= 4 && description.length >= 10) {
             // create task
+            console.log("assignee", assignee);
             supabase
               .from("tasks")
               .insert({
                 title,
                 description,
                 tenant,
+                assignee,
               })
               .select()
               .single()
@@ -60,6 +64,18 @@ export default function CreateTask({ params }) {
         <input
           ref={taskTitleRef}
           placeholder="Add a title"
+          disabled={isLoading}
+        />
+
+        <AssigneeSelect
+          onValueChanged={(v) => {
+            console.log("onValueChanged", v);
+            setAssignee(v =>{
+              console.log("setAssignee", v);
+              return v;
+            });
+          }}
+          tenant={params.tenant}
           disabled={isLoading}
         />
         <textarea
