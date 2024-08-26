@@ -2,8 +2,17 @@
   $theme-color: "pumpkin"
 );
 :root {
-  --pico-border-radius: 2rem;
+  --pico-border-radius: 1rem;
   --pico-typography-spacing-vertical: 1.5rem;
   --pico-form-element-spacing-vertical: 1rem;
   --pico-form-element-spacing-horizontal: 1.25rem;
+}
+
+button.little-danger {
+  font-size: 0.9rem;
+  color: red;
+  width: auto;
+  justify-self: end;
+  border-color: var(--del-color);
+  background: transparent;
 }

@@ -36,7 +36,7 @@ export default function Nav({tenant}) {
         <li>
           <Link
             role="button"
-            href={getPath("/tasks")}
+            href={getPath("/tasks")+`?r=${Math.random()}`}
             {...(pathname === getPath("/tasks") ? activeProps : inactiveProps)}
           >
             Task List

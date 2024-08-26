@@ -1,8 +1,6 @@
 import { getSupabaseCookiesUtilClient } from "@/supabase-utils/cookiesUtilClient";
-import classes from "./TaskDetails.module.css";
 import { notFound } from "next/navigation";
-import { TaskComments } from "./TaskComments";
-import { TASK_STATUS } from "@/utils/constants";
+import { TaskDetails } from "./TaskDetails";
 
 export default async function TaskDetailsPage({ params }) {
   const supabase = getSupabaseCookiesUtilClient();
@@ -16,32 +14,19 @@ export default async function TaskDetailsPage({ params }) {
     console.error(error);
     return notFound();
   }
-  const {
-    created_at,
-    title,
-    description,
-    created_by,
-    author_name,
-    status
-  } = data;
 
-  const dateString = new Date(created_at).toLocaleString("en-US");
+  const supabase_user_id = (await supabase.auth.getUser()).data.user.id;
+  const { data: appUser } = await supabase
+    .from("app_users")
+    .select("id")
+    .eq("supabase_user", supabase_user_id)
+    .single();
+
+  const isAuthor = appUser.id === data.created_by;
 
   return (
-    <article className={classes.taskDetails}>
-      <header>
-        <strong>#{params.id}</strong> -{" "}
-        <strong className={classes.taskStatusGreen}>{TASK_STATUS[status]}</strong>
-        <br />
-        <small className={classes.authorAndDate}>
-          Created by <strong>{author_name}</strong> at{" "}
-          <time>{dateString}</time>
-        </small>
-        <h2>{title}</h2>
-      </header>
-
-      <section>{description}</section>
-      <TaskComments />
-    </article>
+    <>
+      <TaskDetails {...data} isAuthor={isAuthor} />
+    </>
   );
 }
