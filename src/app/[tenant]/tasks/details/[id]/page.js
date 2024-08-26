@@ -2,6 +2,7 @@ import { getSupabaseCookiesUtilClient } from "@/supabase-utils/cookiesUtilClient
 import classes from "./TaskDetails.module.css";
 import { notFound } from "next/navigation";
 import { TaskComments } from "./TaskComments";
+import { TICKET_STATUS } from "@/utils/constants";
 
 export default async function TaskDetailsPage({ params }) {
   const supabase = getSupabaseCookiesUtilClient();
@@ -30,7 +31,7 @@ export default async function TaskDetailsPage({ params }) {
     <article className={classes.taskDetails}>
       <header>
         <strong>#{params.id}</strong> -{" "}
-        <strong className={classes.taskStatusGreen}>{status}</strong>
+        <strong className={classes.taskStatusGreen}>{TICKET_STATUS[status]}</strong>
         <br />
         <small className={classes.authorAndDate}>
           Created by <strong>{author_name}</strong> at{" "}
