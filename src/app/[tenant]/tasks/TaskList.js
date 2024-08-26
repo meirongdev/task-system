@@ -22,6 +22,8 @@ export async function TaskList({ tenant, searchParams }) {
     .from("tasks")
     .select()
     .eq("tenant", tenant)
+    .order("status", {ascending: true})
+    .order("created_at", {ascending: false})
     .range(startingPoint, startingPoint + pageSize - 1);
 
   const { count, countError } = await supabase
