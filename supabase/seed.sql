@@ -119,7 +119,38 @@ INSERT INTO "auth"."audit_log_entries" ("instance_id", "id", "payload", "created
 	('00000000-0000-0000-0000-000000000000', '8e740112-4ff9-4ac7-bd20-124a08d05d02', '{"action":"token_refreshed","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"token"}', '2024-08-25 12:58:55.846652+00', ''),
 	('00000000-0000-0000-0000-000000000000', '8bb3e7ca-5e3c-4610-9603-e74cdf3bd10f', '{"action":"token_refreshed","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"token"}', '2024-08-25 12:59:27.276639+00', ''),
 	('00000000-0000-0000-0000-000000000000', 'cbe79cab-1aec-48a5-a6d8-8cb625305921', '{"action":"token_refreshed","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"token"}', '2024-08-25 12:59:27.399257+00', ''),
-	('00000000-0000-0000-0000-000000000000', '79b42f10-3691-40b4-97c1-1ac452f4756f', '{"action":"token_refreshed","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"token"}', '2024-08-25 12:59:28.071242+00', '');
+	('00000000-0000-0000-0000-000000000000', '79b42f10-3691-40b4-97c1-1ac452f4756f', '{"action":"token_refreshed","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"token"}', '2024-08-25 12:59:28.071242+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'c82cdf42-db6d-4d3a-801c-b177960e2163', '{"action":"logout","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account"}', '2024-08-25 13:08:31.028171+00', ''),
+	('00000000-0000-0000-0000-000000000000', '3d648d93-022b-448b-9efa-2c5e5f60b447', '{"action":"login","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-08-25 13:08:36.26601+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'e1d69d8b-a851-46fa-815c-6ba9311ed90b', '{"action":"logout","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account"}', '2024-08-25 13:08:43.156362+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'd308c9d4-0867-49af-a287-a8d122040975', '{"action":"user_recovery_requested","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"user"}', '2024-08-25 13:08:49.662271+00', ''),
+	('00000000-0000-0000-0000-000000000000', '57910326-6e9a-4d4a-a5e0-5b9ecdb7851c', '{"action":"user_recovery_requested","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"user"}', '2024-08-25 13:08:55.810453+00', ''),
+	('00000000-0000-0000-0000-000000000000', '4db65852-ba09-40c2-a9a2-7f8879beb2f3', '{"action":"login","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-08-25 14:42:59.019234+00', ''),
+	('00000000-0000-0000-0000-000000000000', '86c7776e-c92a-491b-8e63-1da6dee19f9c', '{"action":"logout","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account"}', '2024-08-25 14:48:40.067001+00', ''),
+	('00000000-0000-0000-0000-000000000000', '0299c748-34f8-4a43-99c3-3ecad57ae6a5', '{"action":"login","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-08-25 14:48:46.864764+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'ac443ce0-47d8-4204-8472-66331acf0fcd', '{"action":"logout","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account"}', '2024-08-25 14:48:56.815344+00', ''),
+	('00000000-0000-0000-0000-000000000000', '4dc78b82-8be8-484a-950e-a0dbb053173d', '{"action":"user_recovery_requested","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"user"}', '2024-08-25 14:49:03.601026+00', ''),
+	('00000000-0000-0000-0000-000000000000', '8c11a9f2-d5bd-4b80-8311-7dabff90f365', '{"action":"user_recovery_requested","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"user"}', '2024-08-25 14:49:11.224966+00', ''),
+	('00000000-0000-0000-0000-000000000000', '84ed4673-cc4d-4b83-8f19-c288e6431176', '{"action":"login","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-08-25 15:00:26.317276+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'cf71be1a-809a-43bb-898a-ca535f3fe189', '{"action":"logout","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account"}', '2024-08-25 15:00:30.324952+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'a9120e11-b9e2-4272-9f68-e84baee1978b', '{"action":"login","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-08-25 15:00:48.027177+00', ''),
+	('00000000-0000-0000-0000-000000000000', '645336c8-10b7-4077-a701-c7c32232ed38', '{"action":"logout","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account"}', '2024-08-25 15:02:40.296649+00', ''),
+	('00000000-0000-0000-0000-000000000000', '4b42dbdc-89ff-4252-bee4-232798b05b56', '{"action":"login","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-08-25 15:03:54.653281+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'e190226a-e7e0-42a8-8b5a-311c653113d9', '{"action":"logout","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account"}', '2024-08-25 15:04:04.863101+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'da3c23ff-7a47-4255-a296-33b4c6b02de6', '{"action":"login","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-08-25 15:04:22.708107+00', ''),
+	('00000000-0000-0000-0000-000000000000', '223ca863-0961-4f9a-a774-28455b465480', '{"action":"logout","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account"}', '2024-08-25 15:04:29.349001+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'a0809cf8-6725-4c75-87ac-91a849d4c4ce', '{"action":"login","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-08-25 15:05:33.11821+00', ''),
+	('00000000-0000-0000-0000-000000000000', '3360dd7d-f058-404b-9241-43544de310ef', '{"action":"logout","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account"}', '2024-08-25 15:08:01.564666+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'b51f59a3-6c82-4797-8a4d-3d629ffb526e', '{"action":"login","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-08-25 15:08:08.385879+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'c233f15b-cb3d-4fc5-834d-1bc2e5d533ab', '{"action":"logout","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account"}', '2024-08-25 15:08:10.433369+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'abab2eec-ebc3-4a47-832a-e19444f68ea7', '{"action":"user_signedup","actor_id":"00000000-0000-0000-0000-000000000000","actor_username":"service_role","actor_via_sso":false,"log_type":"team","traits":{"user_email":"xixi@dev.local","user_id":"968ad730-fae5-418f-b481-9a793fbe2d55","user_phone":""}}', '2024-08-25 15:54:44.039441+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'a3d11326-3128-495f-a496-d58b75947067', '{"action":"user_signedup","actor_id":"968ad730-fae5-418f-b481-9a793fbe2d55","actor_username":"xixi@dev.local","actor_via_sso":false,"log_type":"team"}', '2024-08-25 16:06:42.645357+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'e2548bd4-58c4-42d4-8f4a-d8b9e1a0a330', '{"action":"logout","actor_id":"968ad730-fae5-418f-b481-9a793fbe2d55","actor_username":"xixi@dev.local","actor_via_sso":false,"log_type":"account"}', '2024-08-25 16:09:18.2658+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'a6d4a1e9-3272-46de-b7c6-c4f23104be3b', '{"action":"login","actor_id":"968ad730-fae5-418f-b481-9a793fbe2d55","actor_username":"xixi@dev.local","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-08-25 16:09:34.116259+00', ''),
+	('00000000-0000-0000-0000-000000000000', '096563ae-ae66-43db-8de1-fe40075d75ac', '{"action":"login","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-08-26 01:47:25.781569+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'fb714fb4-3d04-41b4-8f66-7c1a26ad65c8', '{"action":"token_refreshed","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"token"}', '2024-08-26 04:01:48.724045+00', ''),
+	('00000000-0000-0000-0000-000000000000', '7dc81ae4-5a0f-414a-9931-44929f30a178', '{"action":"token_revoked","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"token"}', '2024-08-26 04:01:48.72468+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'db029dc7-a3dd-42d3-bf76-85266348237d', '{"action":"token_refreshed","actor_id":"18e196b7-a5bb-4360-8100-3405f994978e","actor_username":"meirongdev@gmail.com","actor_via_sso":false,"log_type":"token"}', '2024-08-26 04:01:48.737375+00', '');
 
 
 --
@@ -133,7 +164,8 @@ INSERT INTO "auth"."audit_log_entries" ("instance_id", "id", "payload", "created
 --
 
 INSERT INTO "auth"."users" ("instance_id", "id", "aud", "role", "email", "encrypted_password", "email_confirmed_at", "invited_at", "confirmation_token", "confirmation_sent_at", "recovery_token", "recovery_sent_at", "email_change_token_new", "email_change", "email_change_sent_at", "last_sign_in_at", "raw_app_meta_data", "raw_user_meta_data", "is_super_admin", "created_at", "updated_at", "phone", "phone_confirmed_at", "phone_change", "phone_change_token", "phone_change_sent_at", "email_change_token_current", "email_change_confirm_status", "banned_until", "reauthentication_token", "reauthentication_sent_at", "is_sso_user", "deleted_at", "is_anonymous") VALUES
-	('00000000-0000-0000-0000-000000000000', '18e196b7-a5bb-4360-8100-3405f994978e', 'authenticated', 'authenticated', 'meirongdev@gmail.com', '$2a$10$Qqed8WRuPrEBlPzy5ivv9.Xi6W6oBdoadk4DHnN0VJaNkK1HOiGLi', '2024-08-24 08:17:44.256785+00', NULL, '', NULL, '6d0bddf6e57942e6ca759f7c072c0d66b9f964df5b1723f8f0e4d847', '2024-08-25 02:03:03.834161+00', '', '', NULL, '2024-08-25 10:00:47.956401+00', '{"tenants": ["dev", "test"], "provider": "email", "providers": ["email"]}', '{}', NULL, '2024-08-24 08:17:44.250231+00', '2024-08-25 12:58:51.68578+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false);
+	('00000000-0000-0000-0000-000000000000', '18e196b7-a5bb-4360-8100-3405f994978e', 'authenticated', 'authenticated', 'meirongdev@gmail.com', '$2a$10$Qqed8WRuPrEBlPzy5ivv9.Xi6W6oBdoadk4DHnN0VJaNkK1HOiGLi', '2024-08-24 08:17:44.256785+00', NULL, '', NULL, '1942ecb892c2d3cf5b86a6c6bc6bf66c4e96c2f55b34266bcc1b644c', '2024-08-25 14:49:11.224821+00', '', '', NULL, '2024-08-26 01:47:25.783583+00', '{"tenants": ["dev", "test"], "provider": "email", "providers": ["email"]}', '{}', NULL, '2024-08-24 08:17:44.250231+00', '2024-08-26 04:01:48.726468+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false),
+	('00000000-0000-0000-0000-000000000000', '968ad730-fae5-418f-b481-9a793fbe2d55', 'authenticated', 'authenticated', 'xixi@dev.local', '$2a$10$rSwQZ8SwpmKwobQW3/RaiuzYSk7DA7W59PZhF8cFDiws1ukcB1p4m', '2024-08-25 16:06:42.646001+00', NULL, '', '2024-08-25 15:54:44.066698+00', '', NULL, '', '', NULL, '2024-08-25 16:09:34.116983+00', '{"tenants": ["dev"], "provider": "email", "providers": ["email"]}', '{}', NULL, '2024-08-25 15:54:44.036069+00', '2024-08-25 16:09:34.117894+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false);
 
 
 --
@@ -141,7 +173,8 @@ INSERT INTO "auth"."users" ("instance_id", "id", "aud", "role", "email", "encryp
 --
 
 INSERT INTO "auth"."identities" ("provider_id", "user_id", "identity_data", "provider", "last_sign_in_at", "created_at", "updated_at", "id") VALUES
-	('18e196b7-a5bb-4360-8100-3405f994978e', '18e196b7-a5bb-4360-8100-3405f994978e', '{"sub": "18e196b7-a5bb-4360-8100-3405f994978e", "email": "meirongdev@gmail.com", "email_verified": false, "phone_verified": false}', 'email', '2024-08-24 08:17:44.253442+00', '2024-08-24 08:17:44.25348+00', '2024-08-24 08:17:44.25348+00', 'da1c8e99-7133-425d-948e-b722027727b8');
+	('18e196b7-a5bb-4360-8100-3405f994978e', '18e196b7-a5bb-4360-8100-3405f994978e', '{"sub": "18e196b7-a5bb-4360-8100-3405f994978e", "email": "meirongdev@gmail.com", "email_verified": false, "phone_verified": false}', 'email', '2024-08-24 08:17:44.253442+00', '2024-08-24 08:17:44.25348+00', '2024-08-24 08:17:44.25348+00', 'da1c8e99-7133-425d-948e-b722027727b8'),
+	('968ad730-fae5-418f-b481-9a793fbe2d55', '968ad730-fae5-418f-b481-9a793fbe2d55', '{"sub": "968ad730-fae5-418f-b481-9a793fbe2d55", "email": "xixi@dev.local", "email_verified": false, "phone_verified": false}', 'email', '2024-08-25 15:54:44.038079+00', '2024-08-25 15:54:44.038122+00', '2024-08-25 15:54:44.038122+00', '5fbe7fda-8e08-4d65-a6d8-af7a5acd4350');
 
 
 --
@@ -155,7 +188,8 @@ INSERT INTO "auth"."identities" ("provider_id", "user_id", "identity_data", "pro
 --
 
 INSERT INTO "auth"."sessions" ("id", "user_id", "created_at", "updated_at", "factor_id", "aal", "not_after", "refreshed_at", "user_agent", "ip", "tag") VALUES
-	('93539cf6-a613-466e-8e77-65150b806931', '18e196b7-a5bb-4360-8100-3405f994978e', '2024-08-25 10:00:47.956491+00', '2024-08-25 12:59:28.07173+00', NULL, 'aal1', NULL, '2024-08-25 12:59:28.071681', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', '172.18.0.1', NULL);
+	('84003e63-7f2c-4079-8099-d6cd8cb0adeb', '968ad730-fae5-418f-b481-9a793fbe2d55', '2024-08-25 16:09:34.11702+00', '2024-08-25 16:09:34.11702+00', NULL, 'aal1', NULL, NULL, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', '172.18.0.1', NULL),
+	('23d10393-d8ba-41dd-b0ad-bc91c9db6840', '18e196b7-a5bb-4360-8100-3405f994978e', '2024-08-26 01:47:25.783641+00', '2024-08-26 04:01:48.738908+00', NULL, 'aal1', NULL, '2024-08-26 04:01:48.738852', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', '172.18.0.1', NULL);
 
 
 --
@@ -163,7 +197,8 @@ INSERT INTO "auth"."sessions" ("id", "user_id", "created_at", "updated_at", "fac
 --
 
 INSERT INTO "auth"."mfa_amr_claims" ("session_id", "created_at", "updated_at", "authentication_method", "id") VALUES
-	('93539cf6-a613-466e-8e77-65150b806931', '2024-08-25 10:00:47.958696+00', '2024-08-25 10:00:47.958696+00', 'password', '7d3d4c0a-e361-4eea-a8ea-8ca927ea13e0');
+	('84003e63-7f2c-4079-8099-d6cd8cb0adeb', '2024-08-25 16:09:34.118025+00', '2024-08-25 16:09:34.118025+00', 'password', 'a9b07035-c4ab-4c7c-ad71-2e20b1d0cd1a'),
+	('23d10393-d8ba-41dd-b0ad-bc91c9db6840', '2024-08-26 01:47:25.790181+00', '2024-08-26 01:47:25.790181+00', 'password', 'c8f94f54-7b63-4ee3-9ced-060c79f41306');
 
 
 --
@@ -183,7 +218,7 @@ INSERT INTO "auth"."mfa_amr_claims" ("session_id", "created_at", "updated_at", "
 --
 
 INSERT INTO "auth"."one_time_tokens" ("id", "user_id", "token_type", "token_hash", "relates_to", "created_at", "updated_at") VALUES
-	('01a44999-50ee-431e-b856-7ca11565d8a6', '18e196b7-a5bb-4360-8100-3405f994978e', 'recovery_token', '6d0bddf6e57942e6ca759f7c072c0d66b9f964df5b1723f8f0e4d847', 'meirongdev@gmail.com', '2024-08-25 02:03:03.835297', '2024-08-25 02:03:03.835297');
+	('71629934-bdde-409b-ae6c-54a8c103f1e8', '18e196b7-a5bb-4360-8100-3405f994978e', 'recovery_token', '1942ecb892c2d3cf5b86a6c6bc6bf66c4e96c2f55b34266bcc1b644c', 'meirongdev@gmail.com', '2024-08-25 14:49:11.225951', '2024-08-25 14:49:11.225951');
 
 
 --
@@ -191,10 +226,9 @@ INSERT INTO "auth"."one_time_tokens" ("id", "user_id", "token_type", "token_hash
 --
 
 INSERT INTO "auth"."refresh_tokens" ("instance_id", "id", "token", "user_id", "revoked", "created_at", "updated_at", "parent", "session_id") VALUES
-	('00000000-0000-0000-0000-000000000000', 39, 'mteLJCKLtGqvxWphvWUAlw', '18e196b7-a5bb-4360-8100-3405f994978e', true, '2024-08-25 10:00:47.957448+00', '2024-08-25 10:59:04.15007+00', NULL, '93539cf6-a613-466e-8e77-65150b806931'),
-	('00000000-0000-0000-0000-000000000000', 40, '3hvJvJ7cO1MQnQW0NeHHbw', '18e196b7-a5bb-4360-8100-3405f994978e', true, '2024-08-25 10:59:04.15033+00', '2024-08-25 11:57:28.191427+00', 'mteLJCKLtGqvxWphvWUAlw', '93539cf6-a613-466e-8e77-65150b806931'),
-	('00000000-0000-0000-0000-000000000000', 41, 'dctHVHu5TLNKB9aJ0NVcvw', '18e196b7-a5bb-4360-8100-3405f994978e', true, '2024-08-25 11:57:28.191678+00', '2024-08-25 12:58:51.684862+00', '3hvJvJ7cO1MQnQW0NeHHbw', '93539cf6-a613-466e-8e77-65150b806931'),
-	('00000000-0000-0000-0000-000000000000', 42, 'e7HSp9fTAjDs89-dud5xPQ', '18e196b7-a5bb-4360-8100-3405f994978e', false, '2024-08-25 12:58:51.685111+00', '2024-08-25 12:58:51.685111+00', 'dctHVHu5TLNKB9aJ0NVcvw', '93539cf6-a613-466e-8e77-65150b806931');
+	('00000000-0000-0000-0000-000000000000', 53, 'tecOuqHaPmSBAviyF_LCbA', '968ad730-fae5-418f-b481-9a793fbe2d55', false, '2024-08-25 16:09:34.117449+00', '2024-08-25 16:09:34.117449+00', NULL, '84003e63-7f2c-4079-8099-d6cd8cb0adeb'),
+	('00000000-0000-0000-0000-000000000000', 54, 'tzNplFYvojyE5f4m7VcYag', '18e196b7-a5bb-4360-8100-3405f994978e', true, '2024-08-26 01:47:25.785961+00', '2024-08-26 04:01:48.725102+00', NULL, '23d10393-d8ba-41dd-b0ad-bc91c9db6840'),
+	('00000000-0000-0000-0000-000000000000', 55, 'dxZ00TwTAGvdc18sdk1NGw', '18e196b7-a5bb-4360-8100-3405f994978e', false, '2024-08-26 04:01:48.72571+00', '2024-08-26 04:01:48.72571+00', 'tzNplFYvojyE5f4m7VcYag', '23d10393-d8ba-41dd-b0ad-bc91c9db6840');
 
 
 --
@@ -232,7 +266,8 @@ INSERT INTO "auth"."refresh_tokens" ("instance_id", "id", "token", "user_id", "r
 --
 
 INSERT INTO "public"."app_users" ("id", "created_at", "full_name", "supabase_user") VALUES
-	(1, '2024-08-24 15:29:15.899719+00', 'Huang Meirong', '18e196b7-a5bb-4360-8100-3405f994978e');
+	(1, '2024-08-24 15:29:15.899719+00', 'Huang Meirong', '18e196b7-a5bb-4360-8100-3405f994978e'),
+	(2, '2024-08-25 15:54:44.049492+00', 'xixi', '968ad730-fae5-418f-b481-9a793fbe2d55');
 
 
 --
@@ -240,8 +275,16 @@ INSERT INTO "public"."app_users" ("id", "created_at", "full_name", "supabase_use
 --
 
 INSERT INTO "public"."tenants" ("id", "created_at", "name", "domain") VALUES
-	('test', '2024-08-24 14:58:18.38934+00', '测试任务组', 'test.tasks.meirong.dev'),
-	('dev', '2024-08-24 14:59:05.804474+00', '开发任务组', 'dev.tasks.meirong.dev');
+	('test', '2024-08-24 14:58:18.38934+00', '测试任务组', 'test.local'),
+	('dev', '2024-08-24 14:59:05.804474+00', '开发任务组', 'dev.local');
+
+
+--
+-- Data for Name: tasks; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO "public"."tasks" ("id", "created_at", "created_by", "tenant", "title", "description", "status", "author_name") VALUES
+	(2, '2024-08-26 04:38:13.538794+00', 1, 'dev', 'task name1', 'task description1111111111', 'open', 'Huang Meirong');
 
 
 --
@@ -250,7 +293,8 @@ INSERT INTO "public"."tenants" ("id", "created_at", "name", "domain") VALUES
 
 INSERT INTO "public"."tenant_permissions" ("id", "created_at", "app_user", "tenant") VALUES
 	(1, '2024-08-24 15:34:07.751236+00', 1, 'test'),
-	(2, '2024-08-24 15:36:05.303414+00', 1, 'dev');
+	(2, '2024-08-24 15:36:05.303414+00', 1, 'dev'),
+	(3, '2024-08-25 15:54:44.057862+00', 2, 'dev');
 
 
 --
@@ -293,7 +337,7 @@ INSERT INTO "public"."tenant_permissions" ("id", "created_at", "app_user", "tena
 -- Name: refresh_tokens_id_seq; Type: SEQUENCE SET; Schema: auth; Owner: supabase_auth_admin
 --
 
-SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 42, true);
+SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 55, true);
 
 
 --
@@ -307,14 +351,21 @@ SELECT pg_catalog.setval('"pgsodium"."key_key_id_seq"', 1, false);
 -- Name: app_users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"public"."app_users_id_seq"', 1, true);
+SELECT pg_catalog.setval('"public"."app_users_id_seq"', 2, true);
+
+
+--
+-- Name: tasks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"public"."tasks_id_seq"', 2, true);
 
 
 --
 -- Name: tenant_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"public"."tenant_permissions_id_seq"', 2, true);
+SELECT pg_catalog.setval('"public"."tenant_permissions_id_seq"', 3, true);
 
 
 --
