@@ -1,9 +1,17 @@
 //
 
+import { getSupabaseCookiesUtilClient } from "@/supabase-utils/cookiesUtilClient";
 import { urlPath } from "@/utils/url-helpers";
+import { TICKET_STATUS } from "@/utils/constants";
+
 import Link from "next/link";
 
-export function TaskList({ tasks, tenant }) {
+export async function TaskList({ tenant }) {
+  const supabase = getSupabaseCookiesUtilClient();
+  const { data: tasks, error } = await supabase
+    .from("tasks")
+    .select()
+    .eq("tenant", tenant);
   return (
     <table>
       <thead>
@@ -18,9 +26,11 @@ export function TaskList({ tasks, tenant }) {
           <tr key={task.id}>
             <td>{task.id}</td>
             <td>
-              <Link href={urlPath(`/tasks/details/${task.id}`, tenant)}>{task.title}</Link>
+              <Link href={urlPath(`/tasks/details/${task.id}`, tenant)}>
+                {task.title}
+              </Link>
             </td>
-            <td>{task.status}</td>
+            <td>{TICKET_STATUS[task.status]}</td>
           </tr>
         ))}
       </tbody>
