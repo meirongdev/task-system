@@ -1,4 +1,4 @@
-export const TICKET_STATUS = {
+export const TASK_STATUS = {
   open: "Open",
   in_progress: "In progress",
   information_missing: "Information missing",
