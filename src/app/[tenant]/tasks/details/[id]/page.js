@@ -7,7 +7,7 @@ export default async function TaskDetailsPage({ params }) {
   const id = Number(params.id);
   const { data, error } = await supabase
     .from("tasks")
-    .select("*, comments (*)")
+    .select("*, comments  (*, comment_attachments (*))")
     .eq("id", id)
     .order("created_at", { ascending: true, referencedTable: "comments" })
     .single();

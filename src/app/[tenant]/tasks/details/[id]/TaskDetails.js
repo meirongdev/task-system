@@ -89,7 +89,7 @@ export function TaskDetails({
       </header>
 
       <section>{description}</section>
-      <TaskComments taskID={id} initialComments={comments} />
+      <TaskComments taskID={id} initialComments={comments} tenant={tenant} />
     </article>
   );
 }
