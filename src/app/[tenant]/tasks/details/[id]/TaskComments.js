@@ -1,43 +1,47 @@
 "use client";
 import { useRef } from "react";
 import classes from "./TaskDetails.module.css";
+import { getSupabaseBrowserClient } from "@/supabase-utils/browserClient";
 
-const comments = [
-  {
-    author: "Alice",
-    date: "2027-01-02",
-    content: "This is a comment from Alice",
-  },{
-    author: "Bob",
-    date: "2027-01-03",
-    content: "This is a comment from Bob",
-  }
-];
-
-export function TaskComments() {
+export function TaskComments({ taskID, initialComments }) {
   const commentRef = useRef(null);
+  const supabase = getSupabaseBrowserClient();
+  const comments = initialComments ?? [];
 
   return (
     <footer>
-      <h4>Comments</h4>
+      <h4>Comments ({comments.length})</h4>
 
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          alert("TODO: Add comment");
+          const comment_text = commentRef.current.value.trim();
+          if (!comment_text) {
+            alert("Please enter a comment.");
+          }
+          commentRef.disabled = true;
+          supabase
+            .from("comments")
+            .insert({
+              task: taskID,
+              comment_text,
+            })
+            .then(() => {
+              commentRef.current.value = "";
+              commentRef.disabled = false;
+            });
         }}
       >
         <textarea ref={commentRef} placeholder="Add a comment" />
         <button type="submit">Add comment</button>
       </form>
 
-      {/* <section>We have {comments.length} comments.</section> */}
       <section>
         {comments.map((comment) => (
-          <article key={comment.date} className={classes.comment}>
-            <strong>{comment.author} </strong>
-            <time>{comment.date}</time>
-            <p>{comment.content}</p>
+          <article key={comment.id} className={classes.comment}>
+            <strong>{comment.author_name} </strong>
+            <time>{new Date(comment.created_at).toLocaleString("en-US")}</time>
+            <p>{comment.comment_text}</p>
           </article>
         ))}
       </section>

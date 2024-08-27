@@ -18,6 +18,7 @@ export function TaskDetails({
   author_name,
   assignee,
   isAuthor,
+  comments,
 }) {
   const supabase = getSupabaseBrowserClient();
   const router = useRouter();
@@ -88,7 +89,7 @@ export function TaskDetails({
       </header>
 
       <section>{description}</section>
-      <TaskComments />
+      <TaskComments taskID={id} initialComments={comments} />
     </article>
   );
 }
