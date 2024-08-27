@@ -1,12 +1,49 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import classes from "./TaskDetails.module.css";
 import { getSupabaseBrowserClient } from "@/supabase-utils/browserClient";
 
 export function TaskComments({ taskID, initialComments }) {
   const commentRef = useRef(null);
   const supabase = getSupabaseBrowserClient();
-  const comments = initialComments ?? [];
+  const [comments, setComments] = useState(initialComments || []);
+
+  useEffect(() => {
+    const listener = (payload) => {
+      console.log("comment payload", payload);
+      const eventType = payload.eventType;
+      if (eventType === "INSERT") {
+        setComments((prevComments) => [...prevComments, payload.new]);
+      } else if (eventType === "DELETE") {
+        setComments((prevComments) =>
+          prevComments.filter((comment) => comment.id !== payload.old.id)
+        );
+      } else if (eventType === "UPDATE") {
+        setComments((prevComments) =>
+          prevComments.map((comment) =>
+            comment.id === payload.new.id ? payload.new : comment
+          )
+        );
+      }
+    };
+
+    const subscription = supabase
+      .channel("task-comments")
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "comments",
+          filter: `task=eq.${taskID}`,
+        },
+        listener
+      )
+      .subscribe();
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [taskID]);
 
   return (
     <footer>
