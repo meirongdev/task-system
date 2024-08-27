@@ -95,6 +95,36 @@ grant truncate on table "public"."comments" to "service_role";
 
 grant update on table "public"."comments" to "service_role";
 
+create schema if not exists "rls_helpers";
+
+set check_function_bodies = off;
+
+CREATE OR REPLACE FUNCTION rls_helpers.has_tenant_access(tenant_id text)
+ RETURNS boolean
+ LANGUAGE plpgsql
+AS $function$BEGIN
+RETURN(
+  COALESCE(
+    (auth.jwt() -> 'app_metadata' -> 'tenants')?tenant_id, false
+  )
+);
+END;$function$
+;
+
+CREATE OR REPLACE FUNCTION rls_helpers.is_same_user(app_user_id bigint)
+ RETURNS boolean
+ LANGUAGE plpgsql
+AS $function$BEGIN
+RETURN(
+EXISTS(
+  select from app_users
+  where id=app_user_id and supabase_user=auth.uid()
+)
+);
+END;$function$
+;
+
+
 create policy "delete_by_author"
 on "public"."comments"
 as permissive
@@ -134,35 +164,3 @@ CREATE TRIGGER tr_comments_autoset_created_by BEFORE INSERT ON public.comments F
 CREATE TRIGGER tr_comments_set_tenant_id BEFORE INSERT ON public.comments FOR EACH ROW EXECUTE FUNCTION derive_tenant_from_task();
 
 CREATE TRIGGER tr_tasks_autoset_author_name BEFORE INSERT ON public.tasks FOR EACH ROW EXECUTE FUNCTION autoset_author_name();
-
-
-create schema if not exists "rls_helpers";
-
-set check_function_bodies = off;
-
-CREATE OR REPLACE FUNCTION rls_helpers.has_tenant_access(tenant_id text)
- RETURNS boolean
- LANGUAGE plpgsql
-AS $function$BEGIN
-RETURN(
-  COALESCE(
-    (auth.jwt() -> 'app_metadata' -> 'tenants')?tenant_id, false
-  )
-);
-END;$function$
-;
-
-CREATE OR REPLACE FUNCTION rls_helpers.is_same_user(app_user_id bigint)
- RETURNS boolean
- LANGUAGE plpgsql
-AS $function$BEGIN
-RETURN(
-EXISTS(
-  select from app_users
-  where id=app_user_id and supabase_user=auth.uid()
-)
-);
-END;$function$
-;
-
-
