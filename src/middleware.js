@@ -20,7 +20,7 @@ export async function middleware(request) {
     .eq("domain", hostname)
     .single();
   if (tenantError) {
-    return NextResponse.rewrite(new URL("/not-found", req.url));
+    return NextResponse.rewrite(new URL("/not-found", request.url));
   }
 
   const tenant = tenantData.id;

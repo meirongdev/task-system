@@ -1,0 +1,8 @@
+# apiVersion: v1
+# name: task-system-env-local
+# data:
+#   .env: |-
+#     NEXT_PUBLIC_SUPABASE_URL=http://...
+#     NEXT_PUBLIC_SUPABASE_ANON_KEY=asdf....
+#     SUPABASE_SERVICE_ROLE_KEY=
+# kind: ConfigMap
